@@ -48,12 +48,12 @@ app.use("/api/admin", adminRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 10000;
+
+
+const port = process.env.PORT || 10000;
 
 await connectDb(process.env.MONGODB_URI);
 
 app.listen(port, () => {
-  // eslint-disable-next-line no-console
-  console.log(`API running on http://localhost:${port}`);
+  console.log(`API running on port ${port}`);
 });
-
