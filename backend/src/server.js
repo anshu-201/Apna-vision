@@ -48,7 +48,7 @@ app.use("/api/admin", adminRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-const port = Number(process.env.PORT ?? 8080);
+const PORT = process.env.PORT || 10000;
 
 await connectDb(process.env.MONGODB_URI);
 
