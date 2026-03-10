@@ -27,6 +27,7 @@ backend/
 PORT=8080
 MONGODB_URI=mongodb://127.0.0.1:27017/apna_vision
 ADMIN_KEY=change_this_to_a_long_random_key
+AUTH_JWT_SECRET=change_this_to_a_different_long_random_key
 CORS_ORIGIN=http://localhost:5173
 ```
 
@@ -73,6 +74,10 @@ Open `http://localhost:5173`.
 - `/training` Training (registration stored in MongoDB)
 - `/portfolio` Portfolio
 - `/contact` Contact (messages stored in MongoDB)
+- `/signin` Sign In (Student/Client)
+- `/signup` Sign Up (Student/Client)
+- `/student` Student dashboard (protected)
+- `/client` Client dashboard (protected)
 - `/admin-login` Admin login
 - `/admin` Admin panel (protected)
 
@@ -88,9 +93,15 @@ Open `http://localhost:5173`.
 ## API Routes
 - `POST /api/contact` → store contact message
 - `POST /api/training` → store training registration
+- `POST /api/leads/chatbot` → store chatbot lead (optional phone/email)
+- `POST /api/auth/register` → register user (student/client)
+- `POST /api/auth/login` → login user (student/client)
+- `POST /api/auth/logout` → logout user
+- `GET /api/auth/me` → current user (cookie session)
 - `POST /api/admin/login` → admin login (sets httpOnly cookie)
 - `POST /api/admin/logout` → admin logout (clears cookie)
 - `GET /api/admin/me` → check admin session
 - `GET /api/admin/contacts` (admin) → list contact messages
 - `GET /api/admin/trainings` (admin) → list training registrations
+ - `GET /api/admin/leads` (admin) → list chatbot leads
 

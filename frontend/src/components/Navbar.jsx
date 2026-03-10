@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTheme } from "../state/theme.jsx";
+import { useAuth } from "../state/auth.jsx";
 
 const navItems = [
   { to: "/", label: "Home" },
@@ -15,6 +16,7 @@ const navItems = [
 
 export default function Navbar() {
   const { theme, toggle } = useTheme();
+  const { user, logout } = useAuth();
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/65 backdrop-blur dark:border-slate-800/60 dark:bg-slate-950/40">
@@ -67,6 +69,26 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
+          {user ? (
+            <>
+              <NavLink className="btn-ghost rounded-2xl px-3 py-2" to={user.role === "student" ? "/student" : "/client"}>
+                {user.role === "student" ? "Student" : "Client"}
+              </NavLink>
+              <button
+                type="button"
+                onClick={logout}
+                className="btn-ghost rounded-2xl px-3 py-2"
+                aria-label="Logout"
+                title="Logout"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <NavLink className="btn-ghost rounded-2xl px-3 py-2" to="/signin">
+              Sign In
+            </NavLink>
+          )}
           <button
             type="button"
             onClick={toggle}

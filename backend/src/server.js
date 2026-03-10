@@ -14,6 +14,7 @@ import contactRoutes from "./routes/contact.routes.js";
 import trainingRoutes from "./routes/training.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
 import leadsRoutes from "./routes/leads.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 dotenv.config();
 
@@ -41,6 +42,7 @@ app.use("/api/health", healthRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/training", trainingRoutes);
 app.use("/api/leads", leadsRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 
 app.use(notFoundHandler);
